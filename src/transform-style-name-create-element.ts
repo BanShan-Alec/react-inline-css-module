@@ -6,7 +6,7 @@ interface StyleProps {
 export default function TransformStyleNameCreateElement<
   Props extends StyleProps
 >(
-  origCreateElement: (name: string, props: any, ...extra: any[]) => any,
+  createElementFn: (name: string, props: any, ...extra: any[]) => any,
   classVariables: { [name: string]: string }[],
   name: string,
   rawProps: Props,
@@ -50,11 +50,11 @@ export default function TransformStyleNameCreateElement<
 
     delete props.styleName;
   } else {
-    if (typeof styleName === "undefined") return;
-    console.warn(
-      "%c [@banshan-alec/vite-plugin-react-stylename] styleName is not a string!",
-      "color: red"
-    );
+    if (typeof styleName !== "undefined")
+      console.warn(
+        "%c [@banshan-alec/vite-plugin-react-stylename] styleName is not a string!",
+        "color: red"
+      );
   }
-  return origCreateElement(name, props, ...extra);
+  return createElementFn(name, props, ...extra);
 }
