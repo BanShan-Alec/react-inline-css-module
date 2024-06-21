@@ -38,7 +38,7 @@ export default function TransformStyleNameCreateElement<
     // 解决顺序问题，styleName 在 className 前面还是后面
     // 只适用于在ES6及更高版本的JavaScript中，因为在ES6之前的版本中，对象的属性顺序是不确定的
     const keys = Object.keys(props);
-    if (keys.indexOf("className") < keys.indexOf("styleName")) {
+    if (keys.indexOf("className") > keys.indexOf("styleName")) {
       props.className = [newClassName, props.className]
         .filter(Boolean)
         .join(" ");
