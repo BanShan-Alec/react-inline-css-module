@@ -1,12 +1,16 @@
 # @banshan-alec/vite-plugin-react-stylename
 
->> fork from `https://github.com/anjianshi/react-inline-css-module`
-Auto transform CSS Module class name for React with Webpack or Vite.
+Auto transform CSS Module class name for React with Vite.
 
-Like [babel-plugin-react-css-modules](https://github.com/gajus/babel-plugin-react-css-modules), but more easy to use.
+Fork from [anjianshi/react-inline-css-module: Auto transform CSS Module class name for React with Webpack or Vite.](https://github.com/anjianshi/react-inline-css-module), but fix some errors.
 
-1. Support Webpack and Vite
+1. Only support vite
 2. Support import multiple style files
+3. Fix vite plugin type error
+4. Fix `styleName` order always after `className`.（Now follow your order which you set props）
+5. Add some warnings when use. Like: `variable[${styleName}] is not defined!`
+6. Eliminate unnecessary code, only trabsform code when `enforce: "post"` 
+> [react-inline-css-module/src/index.ts at feature/vite-plugin · BanShan-Alec/react-inline-css-module](https://github.com/BanShan-Alec/react-inline-css-module/blob/feature/vite-plugin/src/index.ts)
 
 
 ## Vite Configuration
@@ -17,7 +21,7 @@ import reactStylename from '@banshan-alec/vite-plugin-react-stylename';
 module.exports = {
   ...
   plugins: [
-    reactStylename({ reactVariableName: 'React' }) // options are optional
+    reactStylename()
   ]
   ...
 }
