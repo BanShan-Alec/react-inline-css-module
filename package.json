@@ -7,7 +7,7 @@
     "dist",
     "types"
   ],
-  "main": "./dist/vite-plugin-react-stylename.cjs",
+  "main": "./dist/vite-plugin-react-stylename.js",
   "module": "./dist/vite-plugin-react-stylename.js",
   "scripts": {
     "test": "echo \"Normal: no test specified\" && exit 0",
