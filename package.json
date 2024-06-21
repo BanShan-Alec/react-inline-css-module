@@ -1,29 +1,41 @@
 {
-  "name": "react-inline-css-module",
-  "version": "1.1.0",
-  "description": "Auto transform CSS Module class name for React with Webpack or Vite.",
+  "name": "@banshan-alec/vite-plugin-react-stylename",
+  "version": "1.0.0",
+  "description": "Auto transform CSS Module class name for React with Vite.",
+  "type": "module",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "main": "./dist/vite-plugin-react-stylename.cjs",
+  "module": "./dist/vite-plugin-react-stylename.js",
   "scripts": {
-    "watch": "npm run clear && tsc --watch",
-    "build": "npm run clear && tsc",
-    "clear": "rm -rf dist",
-    "prepublishOnly": "npm run build"
+    "test": "echo \"Normal: no test specified\" && exit 0",
+    "build": "tsc && vite build",
+    "pub": "npm publish --access=public",
+    "ci": "npm run build && npm run test"
   },
-  "homepage": "https://github.com/anjianshi/react-inline-css-module",
-  "repository": "https://github.com/anjianshi/react-inline-css-module.git",
-  "author": "anjianshi",
+  "author": "",
   "license": "MIT",
   "keywords": [
-    "webpack",
     "vite",
-    "react",
-    "CSS Module"
+    "plugin",
+    "stylename"
   ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://npm.pkg.github.com/@banshan-alec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BanShan-Alec/react-inline-css-module.git"
+  },
+  "peerDependencies": {
+    "vite": "^5.0.0"
   },
   "devDependencies": {
-    "@types/node": "^16.11.6",
-    "@types/webpack": "^5.28.0",
-    "typescript": "^4.4.4"
+    "@types/node": "^20.12.10",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11",
+    "vite-plugin-dts": "^3.9.1"
   }
 }
