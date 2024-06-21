@@ -1,5 +1,6 @@
-# react-inline-css-module
+# @banshan-alec/vite-plugin-react-stylename
 
+>> fork from `https://github.com/anjianshi/react-inline-css-module`
 Auto transform CSS Module class name for React with Webpack or Vite.
 
 Like [babel-plugin-react-css-modules](https://github.com/gajus/babel-plugin-react-css-modules), but more easy to use.
@@ -7,38 +8,16 @@ Like [babel-plugin-react-css-modules](https://github.com/gajus/babel-plugin-reac
 1. Support Webpack and Vite
 2. Support import multiple style files
 
-## Webpack Configuration
-
-```javascript
-module.exports = {
-  ...
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx|ts|tsx)$/,
-        use: [
-          // options are optional
-          { loader: 'react-inline-css-module/dist/webpack-loader', options: { reactVariableName: 'React' } },
-
-          // other loaders, eg babel-loader
-          ...
-        ]
-      }
-    ]
-  }
-  ...
-}
-```
 
 ## Vite Configuration
 
 ```javascript
-const reactInlineCSSModulePlugin = require('react-inline-css-module/dist/vite-plugin').default
+import reactStylename from '@banshan-alec/vite-plugin-react-stylename';
 
 module.exports = {
   ...
   plugins: [
-    reactInlineCSSModulePlugin({ reactVariableName: 'React' })    // options are optional
+    reactStylename({ reactVariableName: 'React' }) // options are optional
   ]
   ...
 }
@@ -49,7 +28,7 @@ module.exports = {
 ```json
 {
   "compilerOptions": {
-    "types": ["react-inline-css-module/src/style-name"]
+    "types": ["@banshan-alec/vite-plugin-react-stylename/types/style-name"]
   }
 }
 ```
