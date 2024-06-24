@@ -23,7 +23,8 @@
     "stylename"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@banshan-alec"
+    "registry": "https://npm.pkg.github.com/@banshan-alec",
+    "@banshan-alec:registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
