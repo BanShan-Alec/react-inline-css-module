@@ -28,11 +28,20 @@ module.exports = {
 ```
 
 ## TypeScript Configuration
+> Configure one of them
 
+global.d.ts（Recommended）
+```ts
+/// <reference types="vite/client" />
+/// <reference types="@banshan-alec/vite-plugin-react-stylename/types/style-name" />
+...
+```
+
+tsconfig.json
 ```json
 {
   "compilerOptions": {
-    "types": ["@banshan-alec/vite-plugin-react-stylename/types/style-name"]
+    "types": ["react-inline-css-module/src/style-name"]
   }
 }
 ```
