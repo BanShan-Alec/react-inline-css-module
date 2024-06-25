@@ -1,14 +1,12 @@
-// 支持识别 styleName 属性
-import 'react'
-declare module 'react' {
+declare namespace React {
   interface Attributes {
-    styleName?: string
+    styleName?: string;
   }
   interface HTMLAttributes<T> {
-    styleName?: string
+    styleName?: string;
   }
   interface SVGAttributes<T> {
-    styleName?: string
+    styleName?: string;
   }
 }
 
@@ -16,7 +14,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     export interface IntrinsicAttributes {
-      styleName?: string
+      styleName?: string;
     }
   }
 }
