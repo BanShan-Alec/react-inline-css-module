@@ -1,6 +1,6 @@
 {
   "name": "@banshan-alec/vite-plugin-react-stylename",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Auto transform CSS Module class name for React with Vite.",
   "type": "module",
   "files": [
@@ -13,6 +13,7 @@
     "test": "echo \"Normal: no test specified\" && exit 0",
     "build": "tsc && vite build",
     "pub": "npm publish --access=public",
+    "postpublish": "npm run pub",
     "ci": "npm run build && npm run test"
   },
   "author": "",
