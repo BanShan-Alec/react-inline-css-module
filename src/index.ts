@@ -49,6 +49,14 @@ export default (options: Options = {}): Plugin => {
         map: null,
       };
     },
+    config() {
+      return {
+        optimizeDeps: {
+          // https://github.com/sveltejs/kit/issues/11793
+          include: [pkgName],
+        },
+      };
+    },
   };
 };
 
