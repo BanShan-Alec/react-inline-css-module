@@ -9,6 +9,7 @@ export interface StyleImport {
   variable?: string; // 引入模块时指定的变量名
   filepath: string; // 引入的文件路径
 }
+
 export function findStyleImports(source: string): StyleImport[] {
   const pattern =
     /(^|\n)\s*import(?:\s+(.+?)\s+from)?\s+(?:'|")(.+?\.module\.(?:css|less|sass|scss))(?:'|");?/g;
@@ -35,6 +36,7 @@ export function formatVariableForStyleImports(
     if (!info.variable) {
       const variable = makeVariableName();
       info.variable = variable;
+      // TODO 使用magic-string
       source = source.replace(
         info.statement,
         `${info.prefixStatement}import ${variable} from '${info.filepath}';`
@@ -53,6 +55,7 @@ function makeVariableName() {
 }
 
 export function importStyleNameTransformer(source: string, inline = false) {
+  // TODO 使用magic-string
   const importCode = `import { TransformStyleNameCreateElement } from '${pkgName}'`;
   return importCode + "\n" + source;
 }
@@ -67,6 +70,7 @@ export function applyStyleNameTransformer(
   classVariables: string[],
   reactVariableName: string
 ) {
+  // TODO 使用magic-string
   source = source.replace(
     // 为什么这样匹配的由来：https://www.typescriptlang.org/docs/handbook/jsx.html
     new RegExp(

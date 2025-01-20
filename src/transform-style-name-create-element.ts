@@ -22,7 +22,7 @@ export default function TransformStyleNameCreateElement<
       .reduce((classNamesArr, styleName) => {
         if (classVariables.every((variable) => !variable[styleName])) {
           console.warn(
-            `%c [@banshan-alec/vite-plugin-react-stylename] variable[${styleName}] is not defined!`,
+            `%c [vite-react-css-modules] variable[${styleName}] is not defined!`,
             "color: orange"
           );
           return classNamesArr;
@@ -52,7 +52,7 @@ export default function TransformStyleNameCreateElement<
   } else {
     if (typeof styleName !== "undefined")
       console.warn(
-        "%c [@banshan-alec/vite-plugin-react-stylename] styleName is not a string!",
+        "%c [vite-react-css-modules] styleName is not a string!",
         "color: red"
       );
   }

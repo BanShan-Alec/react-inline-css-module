@@ -1,22 +1,30 @@
-# @banshan-alec/vite-plugin-react-stylename
+# vite-react-css-modules
 
-Auto transform CSS Module class name for React with Vite.
+Auto transform css-modules's className for React with Vite.
 
-Fork from [anjianshi/react-inline-css-module: Auto transform CSS Module class name for React with Webpack or Vite.](https://github.com/anjianshi/react-inline-css-module), but fix some errors.
+
+You can use [babel-plugin-react-css-modules](https://www.npmjs.com/package/babel-plugin-react-css-modules) to achieve the same effect.
+
+But `vite` does not use Babel by default. This plugin provide a hack way to use styleName in vite.
+
+## Feature
+
+Fork from [anjianshi/react-inline-css-module](https://github.com/anjianshi/react-inline-css-module), but fix some errors.
 
 1. Only support vite
-2. Support import multiple style files
+2. Support import multiple css modules files
 3. Fix vite plugin type error
 4. Fix `styleName` order always after `className`.（Now follow your order which you set props）
 5. Add some warnings when use. Like: `variable[${styleName}] is not defined!`
-6. Eliminate unnecessary code, only trabsform code when `enforce: "post"` 
+6. Remove unnecessary code, only trabsform code when `enforce: "post"` 
 > [react-inline-css-module/src/index.ts at feature/vite-plugin · BanShan-Alec/react-inline-css-module](https://github.com/BanShan-Alec/react-inline-css-module/blob/feature/vite-plugin/src/index.ts)
 
 
 ## Vite Configuration
 
 ```javascript
-import reactStylename from '@banshan-alec/vite-plugin-react-stylename';
+// vite.config.js
+import reactStylename from 'vite-react-css-modules';
 
 module.exports = {
   ...
@@ -28,12 +36,12 @@ module.exports = {
 ```
 
 ## TypeScript Configuration
-> Configure one of them
+> Two way to configure ts prompt
 
 global.d.ts（Recommended）
 ```ts
 /// <reference types="vite/client" />
-/// <reference types="@banshan-alec/vite-plugin-react-stylename/types/style-name" />
+/// <reference types="vite-react-css-modules/types/style-name" />
 ...
 ```
 
@@ -41,14 +49,14 @@ tsconfig.json
 ```json
 {
   "compilerOptions": {
-    "types": ["react-inline-css-module/src/style-name"]
+    "types": ["vite-react-css-modules/types/style-name"]
   }
 }
 ```
 
-## App Code Example
-
-### app.module.css
+## Code Example
+> Also work-well with `less`
+### style.module.css
 
 ```css
 .app {
@@ -63,7 +71,7 @@ tsconfig.json
 ### App.tsx
 
 ```js
-import './app.module.css'
+import './style.module.css'
 
 function App() {
   return (
