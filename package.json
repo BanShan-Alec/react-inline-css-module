@@ -1,6 +1,6 @@
 {
   "name": "vite-react-css-modules",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Auto transform CSS Module class name for React with Vite.",
   "type": "module",
   "files": [
@@ -12,6 +12,7 @@
   "scripts": {
     "test": "echo \"Normal: no test specified\" && exit 0",
     "build": "tsc && vite build",
+    "prepublishOnly": "npm run build",
     "pub": "npm publish --access=public",
     "ci": "npm run build && npm run test"
   },
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.12.10",
+    "magic-string": "^0.30.17",
     "typescript": "^5.4.5",
     "vite": "^5.2.11",
     "vite-plugin-dts": "^3.9.1"

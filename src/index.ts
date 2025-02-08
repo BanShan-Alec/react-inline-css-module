@@ -1,12 +1,6 @@
 import type { Plugin } from "vite";
 import { name as pkgName } from "../package.json";
-import {
-  StyleImport,
-  applyStyleNameTransformer,
-  findStyleImports,
-  formatVariableForStyleImports,
-  importStyleNameTransformer,
-} from "./handle-style-name";
+import { findStyleImports, handleStyleName } from "./handle-style-name";
 
 import TransformStyleNameCreateElement from "./transform-style-name-create-element";
 
@@ -24,29 +18,18 @@ export default (options: Options = {}): Plugin => {
       if (!/\.(tsx|jsx)$/.test(id)) return;
       const imports = findStyleImports(code).filter((item) => !item.variable);
       //   console.log("[ReactInlineCssModuleTransform] imports: ", id, imports);
-
       if (!imports.length) return;
 
-      const formatted = formatVariableForStyleImports(code, imports);
-      const classVariables = formatted.variables;
-
-      let transformedCode = formatted.source;
-      transformedCode = applyStyleNameTransformer(
-        transformedCode,
-        classVariables,
-        reactVariableName
-      );
-      transformedCode = importStyleNameTransformer(transformedCode);
-      //   console.log(
-      //     "[ReactInlineCssModuleTransform] formatted: ",
-      //     id,
-      //     classVariables,
-      //     transformedCode
-      //   );
+      const s = handleStyleName(code, imports, reactVariableName);
 
       return {
-        code: transformedCode,
-        map: null,
+        code: s.toString(),
+        map: s.generateMap({
+          source: id,
+          file: id,
+          includeContent: true,
+          hires: true,
+        }),
       };
     },
     config() {
